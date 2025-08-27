@@ -2,6 +2,8 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 const port = process.env.PORT || 3000
+const connect = require('./config/connection')
+const userRoute = require('./routes/userRoute')
 
 connect()
 
