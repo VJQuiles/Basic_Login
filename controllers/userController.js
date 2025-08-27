@@ -1,4 +1,8 @@
 const User = require('../models/User')
+const jwt = require('jsonwebtoken')
+
+const secret = process.env.JWT_SECRET
+const expiration = '1h'
 
 async function createUser(req, res) {
     try {
@@ -23,7 +27,16 @@ async function loginUser(req, res) {
             return res.status(400).json({ message: "Uh uh uh, that's not the magic email/word(s) uh uh uh " })
         }
 
-        res.status(200).json({ sucess: "Successful Login" })
+        const payload = {
+            _id: user.id,
+            username: user.username,
+            email: user.email,
+        }
+
+        const token = jwt.sign({ data: payload }, secret, { expiresIn: expiration })
+
+        // res.status(200).json({ sucess: "Successful Login" })
+        return res.json({ sucess: "Successful Login", token, username: user.username, email: user.email })
     } catch (error) {
         console.error(error)
         res.status(400).json({ "An error occurred": error.message })
