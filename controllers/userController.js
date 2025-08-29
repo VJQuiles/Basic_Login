@@ -68,7 +68,21 @@ async function loginUser(req, res) {
     }
 }
 
+async function getUser(req, res) {
+    try {
+        if (!req.user) {
+            return res.status(401).json({ error: "Please log in." })
+        }
+        const selectedUser = await User.findById(req.user._id)
+        res.status(200).json(selectedUser)
+    } catch (error) {
+        console.error(error)
+        res.status(400).json({ error: error.message })
+    }
+}
+
 module.exports = {
     createUser,
     loginUser,
+    getUser
 }
