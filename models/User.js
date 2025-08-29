@@ -37,6 +37,9 @@ userSchema.methods.isCorrectPassword = async function (password) {
     return bcrypt.compare(password, this.password)
 }
 
+//checks schema validators in a global fashion(any time there is an update to the data, this auto runs the validators)
+mongoose.set('runValidators', true)
+
 const User = mongoose.model("User", userSchema)
 
 module.exports = User
