@@ -73,7 +73,7 @@ async function getUser(req, res) {
         if (!req.user) {
             return res.status(401).json({ error: "Please log in." })
         }
-        const selectedUser = await User.findById(req.user._id)
+        const selectedUser = await User.findById(req.user._id).select('-password')
         res.status(200).json(selectedUser)
     } catch (error) {
         console.error(error)

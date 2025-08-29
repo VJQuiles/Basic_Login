@@ -1,5 +1,7 @@
 # Basic Login Overview
 
+Note: Some revisions have been done, namely to include token generation in the createUser function. I also added a profile route that uses verification. Further discussion at the end.  
+
 Welcome to a very simple login system. Here you will be able to create a user, and leveraging bcrypt to hash our given password. You can then log in, triggering the bcrypt comparison, and receive your very own jwt to see how pretty it is. 
 
 ## How to run
@@ -22,3 +24,7 @@ Before taking this course, I was already considering things like authentication 
 Course materials on bcrypt, salting, comparing, and creating jwts.
 
 James and Dennis also helped as mentioned above, as well as Karl helping to explain what we are doing conceptually to really lock it in place. Very grateful for my team
+
+I was reviewing the next lab, and realized through the refactoring process I realized my understanding wasn't as firm as I thought. I decided to watch the office hours provided by one of our instructors, Bryan. It was well worth the watch, and I decided to implement some of his strategies, which I have documented in the code. 
+
+In the process I also decided to look back at the lab, and to be honest was unsure if i had missed part of the requirements by not having the verification so I thought it best to push this. 
